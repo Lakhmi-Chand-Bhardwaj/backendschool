@@ -21,7 +21,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log(err));
 
@@ -50,7 +50,7 @@ const sendEmailNotification = (enquiry) => {
   const mailOptions = {
     from: process.env.EMAIL_USER,    
     to: process.env.NOTIFY_EMAIL,    
-    subject: 'New Enquiry Submitted', 
+    subject: 'New Enquiry Admission', 
     html: `
       <h3>New Enquiry Details:</h3>
       <p><strong>First Name:</strong> ${enquiry.firstname}</p>
